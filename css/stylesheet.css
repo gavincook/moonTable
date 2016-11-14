@@ -535,6 +535,7 @@ header a.button {
   top: 0;
   right: 0;
   background: transparent url(../images/github-button.png) 0 0 no-repeat;
+  box-sizing: content-box;
 }
 aside a.button {
   display: block;
@@ -543,6 +544,7 @@ aside a.button {
   margin-bottom: 20px;
   font-size: 21px;
   background: transparent url(../images/download-button.png) 0 0 no-repeat;
+  box-sizing: content-box;
 }
 
 code, pre {
