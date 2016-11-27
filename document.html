@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="plugin/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="plugin/table/css/table.css">
+    <link rel="stylesheet" type="text/css" href="plugin/prism/prism.css">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="plugin/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="plugin/table/js/table.js"></script>
+    <script type="text/javascript" src="plugin/prism/prism.js"></script>
+    <title>Moontable 文档</title>
+</head>
+
+<body>
+<header>
+    <div class="inner">
+        <h1>Moontable</h1>
+        <h2>基于jQuery的表格插件</h2>
+        <a href="https://github.com/gavincook/moonTable" class="button">
+            <small>View project on</small>
+            GitHub</a>
+    </div>
+</header>
+
+<div id="content-wrapper">
+    <pre class="line-numbers">
+<code class="language-javascript">
+$(selector).table({
+                title : "表格标题",
+              columns : [
+                        {
+                            name:"id",//列名,应该整个table中唯一
+                            render:function(rowData){},//自定义渲染逻辑，返回结果会作为单元格内容，rowData为当前行的数据
+                            width:200,//固定列宽，支持像素和百分比。百分比使用"20%"
+                            display:"表头",//表头显示字符,可重复
+                            sort:true,//是否排序,
+                            align:"left",//单元格文字方向，可用值:left/right/center
+                            sortName:"id"//排序名字,与sort一起使用。即传给服务器需要排序的字段名，如果不配置使用name属性
+                        }...
+                       ],
+                data  : {//指定表格数据
+                         totalItemsCount:10,//表格数据总数，用于分页使用
+                         items :[{}]//应该为一个对应表头的数据数组
+                        }，
+                  url : "http://xxx/getData", //异步请求数据的接口，当data未定义时则会从url异步加载数据
+               params : {},//需要传入异步请求接口的参数
+            pageIndex : 1,//当前页码，默认为1
+             pageSize : 15,//每页展示的数据条数
+          multiSelect : true,//指定单选或者复选模式
+        showSelectBox : true,//是否显示单选框或复选框,具体由multiSelect决定
+           dragSelect : false,//是否启动拖拽选择
+          emptyParent : true,//是否清空容器
+           showNumber : true,//是否显示序列号，默认显示
+    serialNumberScope : "all",//序列号作用范围可选值为"page"或"all". 如果为page则序列号会为每一页重新生成序列号,如果为all则序列号在翻页时会继续累加
+              buttons : [
+                         {
+                          text : "按钮",//按钮文字
+                          click : function(btnOpts){}//点击回调，上下文为table,btnOpts代表当前button的配置
+                         }...
+                        ],
+           formatData : function(data){},//提取数据，用于在传入的数据格式和table接收的数据格式不一致时使用，data代表传入的数据对象,返回结果应该形为：{items:[],totalItemsCount:xxx}
+       calcTotalCount : function(data){},//计算总条数,默认使用data.totalItemsCount,data代表传入的数据对象,应该返回整数
+            treeTable : true,//是否开启树形表格
+           treeColumn : "id",//哪一列作为树形表格的处理列
+               indent : "_TreeColumn",//当表格为树形表格时，哪些列需要缩进 可选值为：{_TreeColumn(树形表格处理列) , _All(所有列) , 具体的列名}
+ childrenPropertyName : "_hasChildren",//树形表格中，子行在父行中的标示名字
+         childrenData : [{}],//树形表格处理行，展开时需要渲染的子数据，可为数组或Deferred对象
+       showPagination : true,//是否显示分页栏,默认显示
+            showTitle : true,//是否显示title,默认显示
+      showTableHeader : true,//是否显示表格标题,默认显示
+             bordered : false //是否显示表格border
+});
+</code></pre>
+</div>
+</body>
+</html>
