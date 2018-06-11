@@ -408,7 +408,7 @@
             var tableInstance = this;
             var $container = tableInstance.$container;
             var tableData = tableDataCache[$container.selector];
-            var levels = level.substring(2).match(/(\d)/g);//返回[2,3],第一个0-(表示第一级)需要去掉
+            var levels = level.substring(2).match(/(\d+)/g);//返回[2,3],第一个0-(表示第一级)需要去掉
             var tempData = tableData;
             for (var i = 0, l = levels.length; i < l; i++) {
                 if (i > 0) {
